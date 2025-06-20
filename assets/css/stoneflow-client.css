@@ -1,0 +1,81 @@
+.stoneflow-client-dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.stoneflow-client-dashboard h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: center;
+}
+
+.stoneflow-order-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.stoneflow-order-list th,
+.stoneflow-order-list td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.stoneflow-order-list th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.stoneflow-order-details {
+    display: none;
+    background-color: #f1f1f1;
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-top: -1px;
+}
+
+.stoneflow-order-details.visible {
+    display: table-row;
+}
+
+.view-order-btn {
+    background-color: #26b79c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.view-order-btn:hover {
+    background-color: #1ca98b;
+}
+
+.client-note-form textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.client-note-form button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #26b79c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.client-note-form button:hover {
+    background-color: #1ca98b;
+}

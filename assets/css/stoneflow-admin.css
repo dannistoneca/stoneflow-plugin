@@ -1,0 +1,61 @@
+.stoneflow-admin-wrapper {
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.stoneflow-admin-wrapper h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.stoneflow-admin-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.stoneflow-admin-wrapper th, .stoneflow-admin-wrapper td {
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.stoneflow-admin-wrapper th {
+    background-color: #26b79c;
+    color: white;
+}
+
+.stoneflow-admin-wrapper tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.stoneflow-status-badge {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: white;
+    display: inline-block;
+}
+
+.status-queued { background-color: #999; }
+.status-processing { background-color: #f39c12; }
+.status-completed { background-color: #27ae60; }
+
+.stoneflow-btn {
+    padding: 6px 12px;
+    border: none;
+    background: #26b79c;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.stoneflow-btn:hover {
+    background: #1f9e89;
+}

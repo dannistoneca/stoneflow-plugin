@@ -1,0 +1,128 @@
+/* Main Style for StoneFlow Plugin */
+
+body.stoneflow-admin,
+body.stoneflow-client {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.stoneflow-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stoneflow-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stoneflow-tab-button {
+  padding: 10px 20px;
+  border: 1px solid #26b79c;
+  background: #ffffff;
+  color: #26b79c;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.stoneflow-tab-button.active,
+.stoneflow-tab-button:hover {
+  background: #26b79c;
+  color: #ffffff;
+}
+
+.stoneflow-tab-content {
+  display: none;
+}
+
+.stoneflow-tab-content.active {
+  display: block;
+}
+
+.stoneflow-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.stoneflow-table th,
+.stoneflow-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.stoneflow-table th {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+.stoneflow-status-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  color: #fff;
+}
+
+.status-queued {
+  background-color: #ffa500;
+}
+
+.status-in-process {
+  background-color: #007bff;
+}
+
+.status-completed {
+  background-color: #28a745;
+}
+
+.stoneflow-notes-box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fafafa;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.stoneflow-button {
+  display: inline-block;
+  background-color: #26b79c;
+  color: #ffffff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.stoneflow-button:hover {
+  background-color: #1ca88c;
+}
+
+.stoneflow-section-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.stoneflow-upload-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}

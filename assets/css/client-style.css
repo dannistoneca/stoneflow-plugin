@@ -1,0 +1,56 @@
+/* StoneFlow Client Styles */
+
+.stoneflow-client-container {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    max-width: 900px;
+    margin: 20px auto;
+    font-family: sans-serif;
+}
+
+.stoneflow-client-header {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: center;
+}
+
+.stoneflow-client-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.stoneflow-client-table th,
+.stoneflow-client-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.stoneflow-client-table th {
+    background-color: #f0f0f0;
+}
+
+.stoneflow-client-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.stoneflow-note-block {
+    background: #f9f9f9;
+    border-left: 4px solid #26b79c;
+    padding: 10px;
+    margin: 15px 0;
+    font-style: italic;
+    color: #555;
+}
+
+.stoneflow-status {
+    font-weight: bold;
+    color: #333;
+}
