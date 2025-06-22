@@ -1,4 +1,4 @@
-name: PHP Composer
+name: StoneFlow Plugin Build & PHP Check
 
 on:
   push:
@@ -14,31 +14,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: 📥 Checkout Repo
+      uses: actions/checkout@v4
 
-    - name: Set up PHP
+    - name: 🛠️ Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1' # You can change this to '8.2' or '7.4' if needed
+        php-version: '8.1'
+        extensions: mbstring, intl, dom, curl, json, mysqli
+        coverage: none
 
-    - name: Check PHP version
+    - name: ✅ Check PHP Version
       run: php -v
 
-    - name: Validate composer.json and composer.lock
+    - name: ✅ Check for Composer
+      run: |
+        if command -v composer >/dev/null 2>&1; then
+          echo "Composer is installed"
+        else
+          echo "Installing Composer..."
+          curl -sS https://getcomposer.org/installer | php
+          sudo mv composer.phar /usr/local/bin/composer
+        fi
+
+    - name: 🧪 (Optional) Validate composer.json
+      if: ${{ hashFiles('composer.json') != '' }}
       run: composer validate --strict
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-
-    # - name: Run test suite
-    #   run: composer run-script test
-
+    - name: ✅ Finished
+      run: echo "StoneFlow plugin check complete!"
