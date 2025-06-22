@@ -1,0 +1,20 @@
+name: Build & Release StoneFlow ZIP
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create plugin ZIP
+        run: zip -r stoneflow-${GITHUB_REF#refs/tags/}.zip stoneflow
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: stoneflow-*.zip
