@@ -21,6 +21,7 @@ class PluginTest extends TestCase {
             'stoneflow_admin_dashboard',
             'stoneflow_get_client_profile',
             'stoneflow_update_client_profile',
+            'stoneflow_install_tables',
         ];
 
         foreach ( $expected as $fn ) {

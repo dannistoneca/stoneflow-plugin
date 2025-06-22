@@ -40,3 +40,6 @@ require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-client-intake
 require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-add-client.php';
 require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-view-client.php';
 require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-update-service.php';
+
+// Database setup on activation
+register_activation_hook( __FILE__, 'stoneflow_install_tables' );
