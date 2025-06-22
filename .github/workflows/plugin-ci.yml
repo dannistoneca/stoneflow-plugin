@@ -14,7 +14,7 @@ jobs:
           MYSQL_USER: wp
           MYSQL_PASSWORD: wp
           MYSQL_ROOT_PASSWORD: root
-        ports: [3306:3306]
+        ports: ["3306:3306"]
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
@@ -27,17 +27,19 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'        # Match dev-container
+          php-version: "8.2"
           extensions: mbstring, intl
-          coverage: none            # speed
-      # Install deps
-      - run: composer install --no-interaction --prefer-dist
+          coverage: none
 
-      # Pull WP core + test library (official action)
-      - uses: actions/setup-wordpress-test-library@v1
+      - name: Install Composer deps
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Set up WordPress test library
+        uses: actions/setup-wordpress-test-library@v1
         with:
-          wordpress-version: 'latest'
-          php-version: '8.2'
+          wordpress-version: latest
+          php-version: "8.2"
 
       - name: Run PHPUnit
         run: vendor/bin/phpunit --configuration phpunit.xml.dist
+
