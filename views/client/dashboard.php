@@ -17,18 +17,18 @@
             <tbody>
                 <?php foreach ($orders as $order) : ?>
                     <tr>
-                        <td><?= esc_html($order['service_name']) ?></td>
-                        <td><?= esc_html($order['status']) ?></td>
-                        <td><?= esc_html($order['priority']) ?></td>
-                        <td><?= esc_html($order['created_at']) ?></td>
+                        <td><?= esc_html($order->service_name) ?></td>
+                        <td><?= esc_html($order->status) ?></td>
+                        <td><?= esc_html($order->priority) ?></td>
+                        <td><?= esc_html($order->created_at) ?></td>
                         <td>
-                            <?php if (!empty($order['file_url'])) : ?>
-                                <a href="<?= esc_url($order['file_url']) ?>" target="_blank">Download</a>
+                            <?php if (!empty($order->file_url)) : ?>
+                                <a href="<?= esc_url($order->file_url) ?>" target="_blank">Download</a>
                             <?php else : ?>
                                 <em>Not ready yet</em>
                             <?php endif; ?>
                         </td>
-                        <td><?= esc_html($order['admin_notes']) ?></td>
+                        <td><?= esc_html($order->admin_notes) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
