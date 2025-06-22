@@ -29,6 +29,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/stoneflow-discovery.php';
 require_once plugin_dir_path(__FILE__) . 'includes/stoneflow-file-handler.php';
 require_once plugin_dir_path(__FILE__) . 'includes/stoneflow-client-dashboard.php';
 require_once plugin_dir_path(__FILE__) . 'includes/stoneflow-client-profile.php';
+require_once plugin_dir_path(__FILE__) . 'includes/helpers/stoneflow-client-profile-fields.php';
 //require_once plugin_dir_path(__FILE__) . 'includes/stoneflow-hooks.php';
 require_once plugin_dir_path(__FILE__) . 'includes/stoneflow-shortcodes.php';
 require_once plugin_dir_path(__FILE__) . 'includes/admin-settings.php';

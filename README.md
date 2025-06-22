@@ -21,6 +21,20 @@ This plugin is being actively developed by Danni Stone in collaboration with Lex
 
 ---
 
+## 🔧 Current Features
+
+- Add and manage clients
+- Queue services with status and priority
+- Basic client and admin dashboards
+
+## 🚧 Planned Features
+
+- Expanded client profile fields (contact details, business info)
+- AI-powered onboarding via S.T.O.N.E.
+- Service purchase pages with PayPal integration
+
+---
+
 ## 🧪 Testing
 
 1. Run `composer install` to install dev dependencies.

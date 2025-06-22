@@ -15,7 +15,7 @@ function stoneflow_render_view_client_page() {
         return;
     }
 
-    $client_data = get_user_meta($user_id, 'stoneflow_client_data', true);
+    $client_data = stoneflow_get_client_profile($user_id);
     $notes = get_user_meta($user_id, 'stoneflow_admin_notes', true);
 
     $services_table = $wpdb->prefix . 'stoneflow_services';
@@ -26,6 +26,15 @@ function stoneflow_render_view_client_page() {
     echo '<p><strong>Email:</strong> ' . esc_html($user_info->user_email) . '</p>';
     echo '<p><strong>Status:</strong> ' . esc_html($user_info->user_status) . '</p>';
     echo '<p><strong>Added:</strong> ' . esc_html($user_info->user_registered) . '</p>';
+
+    echo '<h2>Profile Details</h2>';
+    echo '<table class="widefat striped" style="max-width:600px">';
+    foreach ($client_data as $key => $val) {
+        if ($key === 'added') { continue; }
+        $label = ucwords(str_replace('_', ' ', $key));
+        echo '<tr><th style="width:200px">' . esc_html($label) . '</th><td>' . esc_html($val) . '</td></tr>';
+    }
+    echo '</table>';
 
     echo '<h2>📦 Services</h2>';
     if ($services) {
