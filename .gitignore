@@ -1,0 +1,11 @@
+# Composer / vendor
+/vendor/
+# Dev-container downloads
+/.devcontainer/.cache/
+/wordpress/           # throw-away core downloaded in Codespace
+# OS junk
+.DS_Store
+Thumbs.db
+# IDE junk
+.vscode/
+.idea/
