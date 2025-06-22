@@ -21,6 +21,14 @@ This plugin is being actively developed by Danni Stone in collaboration with Lex
 
 ---
 
+## 🧪 Testing
+
+1. Run `composer install` to install dev dependencies.
+2. Execute `vendor/bin/phpunit` to run the tests.
+3. For WordPress integration tests, set the `WP_TESTS_DIR` environment variable to the WordPress test library path.
+
+---
+
 ## 🔒 License
 
 MIT License — open to collaboration but owned and managed by Danni Stone (Stone Business Solutions).
