@@ -1,0 +1,43 @@
+name: StoneFlow Plugin CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: wordpress
+          MYSQL_USER: wp
+          MYSQL_PASSWORD: wp
+          MYSQL_ROOT_PASSWORD: root
+        ports: [3306:3306]
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'        # Match dev-container
+          extensions: mbstring, intl
+          coverage: none            # speed
+      # Install deps
+      - run: composer install --no-interaction --prefer-dist
+
+      # Pull WP core + test library (official action)
+      - uses: actions/setup-wordpress-test-library@v1
+        with:
+          wordpress-version: 'latest'
+          php-version: '8.2'
+
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit --configuration phpunit.xml.dist
