@@ -9,4 +9,19 @@ class PluginTest extends TestCase {
     public function test_phpunit_runs() {
         $this->assertTrue(true);
     }
+
+    public function test_functions_loaded() {
+        $expected = [
+            'stoneflow_display_admin_message',
+            'stoneflow_set_flash_message',
+            'stoneflow_display_flash_message',
+            'stoneflow_save_admin_note',
+            'stoneflow_get_admin_notes',
+            'stoneflow_display_client_dashboard',
+        ];
+
+        foreach ( $expected as $fn ) {
+            $this->assertTrue( function_exists( $fn ), "Function {$fn} should be defined" );
+        }
+    }
 }
