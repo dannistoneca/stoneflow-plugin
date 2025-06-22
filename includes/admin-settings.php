@@ -56,8 +56,3 @@ function stoneflow_admin_email_field() {
 }
 
 
-if ( ! function_exists( 'stoneflow_admin_dashboard' ) ) {
-    function stoneflow_admin_dashboard() {
-        echo '<div class="wrap"><h1>Welcome to StoneFlow Admin</h1><p>This is your main control panel.</p></div>';
-    }
-}

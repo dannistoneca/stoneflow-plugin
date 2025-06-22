@@ -18,6 +18,7 @@ class PluginTest extends TestCase {
             'stoneflow_save_admin_note',
             'stoneflow_get_admin_notes',
             'stoneflow_display_client_dashboard',
+            'stoneflow_admin_dashboard',
         ];
 
         foreach ( $expected as $fn ) {
