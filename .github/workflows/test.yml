@@ -1,1 +1,37 @@
+name: WordPress Plugin Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-plugin:
+    name: Run PHP Lint & Basic Plugin Checks
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+
+    - name: Install PHP dependencies (if needed)
+      run: |
+        if [ -f composer.json ]; then
+          composer install --no-interaction
+        fi
+
+    - name: PHP Lint
+      run: find . -type f -name "*.php" -not -path "./vendor/*" -exec php -l {} \;
+
+    - name: Plugin ZIP build check
+      run: zip -r stoneflow.zip . -x "*.git*" "*.github*" "vendor/*"
+
+    - name: List project files
+      run: ls -la
 
