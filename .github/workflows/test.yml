@@ -1,37 +1,12 @@
-name: WordPress Plugin Test
+- name: Install WP-CLI
+  run: curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-  test-plugin:
-    name: Run PHP Lint & Basic Plugin Checks
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
-
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.1'
-
-    - name: Install PHP dependencies (if needed)
-      run: |
-        if [ -f composer.json ]; then
-          composer install --no-interaction
-        fi
-
-    - name: PHP Lint
-      run: find . -type f -name "*.php" -not -path "./vendor/*" -exec php -l {} \;
-
-    - name: Plugin ZIP build check
-      run: zip -r stoneflow.zip . -x "*.git*" "*.github*" "vendor/*"
-
-    - name: List project files
-      run: ls -la
-
+- name: Set up WordPress
+  run: |
+    mkdir wp-test
+    cd wp-test
+    wp core download
+    wp config create --dbname=wordpress_test --dbuser=root --dbpass= --dbhost=127.0.0.1 --skip-check
+    wp db create
+    wp core install --url="http://example.com" --title="Test Site" --admin_user=admin --admin_password=admin --admin_email=test@example.com
+    wp plugin install ../stoneflow-plugin --activate
