@@ -69,7 +69,7 @@ jobs:
       - name: Run PHPUnit
         run: vendor/bin/phpunit --configuration phpunit.xml.dist --testdox
         env:
-          WP_TESTS_DIR: /tmp/wordpress-tests-lib
+          WP_TESTS_DIR: /tmp/wordpress-tests-lib/includes
 
       # 7️⃣  Enforce WordPress coding standards
       - name: Run PHPCS
