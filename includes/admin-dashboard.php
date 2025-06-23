@@ -1,5 +1,6 @@
 <?php
 // Admin Dashboard Page
+if ( ! function_exists( 'stoneflow_admin_dashboard' ) ) {
 function stoneflow_admin_dashboard() {
 	?>
 	<div class="wrap">
@@ -45,4 +46,5 @@ function stoneflow_admin_dashboard() {
 		</div>
 	</div>
 	<?php
+}
 }
