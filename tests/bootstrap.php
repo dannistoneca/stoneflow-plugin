@@ -10,3 +10,14 @@ tests_add_filter(
 );
 
 require $_tests_dir . '/includes/bootstrap.php';
+
+$tests_dir = getenv( 'WP_TESTS_DIR' );
+
+// Fallback to vendor copy
+if ( ! $tests_dir ) {
+    $tests_dir = __DIR__ . '/../vendor/wp-phpunit/wp-phpunit/includes';
+}
+require_once $tests_dir . '/functions.php';
+
+/* ... rest unchanged ... */
+
