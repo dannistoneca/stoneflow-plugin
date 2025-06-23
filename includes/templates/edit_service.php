@@ -20,13 +20,15 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer( 'stoneflow_ed
 	$notes    = sanitize_textarea_field( $_POST['admin_notes'] );
 
 	$file_url = $service->file_url;
-	if ( ! empty( $_FILES['file']['name'] ) ) {
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-		$upload = wp_handle_upload( $_FILES['file'], array( 'test_form' => false ) );
-		if ( ! isset( $upload['error'] ) ) {
-			$file_url = $upload['url'];
-		}
-	}
+        if ( ! empty( $_FILES['file']['name'] ) ) {
+                if ( defined( 'ABSPATH' ) ) {
+                        require_once ABSPATH . 'wp-admin/includes/file.php';
+                }
+                $upload = wp_handle_upload( $_FILES['file'], array( 'test_form' => false ) );
+                if ( ! isset( $upload['error'] ) ) {
+                        $file_url = $upload['url'];
+                }
+        }
 
 	StoneFlow_DB::update_service(
 		$service_id,

@@ -23,6 +23,8 @@ function stoneflow_install_tables() {
         PRIMARY KEY  (id)
     ) $charset_collate;";
 
-	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-	dbDelta( $sql );
+        if ( defined( 'ABSPATH' ) ) {
+                require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+                dbDelta( $sql );
+        }
 }

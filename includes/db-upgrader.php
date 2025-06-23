@@ -22,6 +22,8 @@ function create_services_table( wpdb $wpdb ): void {
         ) $charset;
     ";
 
-    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-    dbDelta( $sql );
+    if ( defined( 'ABSPATH' ) ) {
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        dbDelta( $sql );
+    }
 }

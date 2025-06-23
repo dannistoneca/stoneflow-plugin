@@ -15,3 +15,8 @@ define( 'WP_PHP_BINARY', 'php' );
 define( 'WP_DEBUG', true );
 
 $table_prefix = 'wptests_';
+
+// Define ABSPATH for test runs if not already defined.
+if ( ! defined( 'ABSPATH' ) ) {
+    define( 'ABSPATH', dirname( __FILE__ ) . '/wordpress/' );
+}
