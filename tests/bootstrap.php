@@ -35,6 +35,13 @@ if (!file_exists($tests_dir . '/functions.php')) {
     exit(1);
 }
 
+// Define required constants for the WordPress test suite before loading the
+// WordPress testing library.
+define( 'WP_TESTS_DOMAIN', 'example.org' );
+define( 'WP_TESTS_EMAIL', 'admin@example.org' );
+define( 'WP_TESTS_TITLE', 'Test Blog' );
+define( 'WP_PHP_BINARY', PHP_BINARY );
+
 require_once $tests_dir . '/functions.php';
 
 tests_add_filter(

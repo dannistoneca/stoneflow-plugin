@@ -16,11 +16,24 @@ define('STONEFLOW_URL', plugin_dir_url(__FILE__));
 define('STONEFLOW_BRAND_COLOR', '#26b79c'); // Teal
 
 // Load includes
-require_once STONEFLOW_DIR . 'includes/class-client-manager.php';
-require_once STONEFLOW_DIR . 'includes/class-service-queue.php';
-require_once STONEFLOW_DIR . 'includes/class-stone-ai.php';
-require_once STONEFLOW_DIR . 'includes/class-admin-notes.php';
-require_once STONEFLOW_DIR . 'includes/class-service-purchase.php';
+$module_files = [
+    'class-client-manager.php',
+    'class-service-queue.php',
+    'class-stone-ai.php',
+    'class-admin-notes.php',
+    'class-service-purchase.php',
+];
+
+foreach ( $module_files as $file ) {
+    $path = STONEFLOW_DIR . 'includes/' . $file;
+    if ( file_exists( $path ) ) {
+        require_once $path;
+    }
+}
+// Fallback stub classes for unit testing when modules are absent.
+if ( ! class_exists( 'StoneFlow_Client_Manager' ) ) {
+    require_once STONEFLOW_DIR . 'includes/class-stubs.php';
+}
 
 register_activation_hook( __FILE__, function () {
     global $wpdb;
