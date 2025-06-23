@@ -14,7 +14,8 @@ jobs:
           MYSQL_USER: wp
           MYSQL_PASSWORD: wp
           MYSQL_ROOT_PASSWORD: root
-        ports: ["3306:3306"]
+        ports:
+          - 3306:3306
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
@@ -22,33 +23,29 @@ jobs:
           --health-retries=5
 
     steps:
+      # 1️⃣  Pull the repo
       - uses: actions/checkout@v4
 
-      - name: Set up PHP
+      # 2️⃣  Install PHP 8.2 *and* the tools we need
+      - name: Set up PHP 8.2 with Composer, PHPUnit, WP-CLI
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: 8.2
           extensions: mbstring, intl
           coverage: none
+          tools: composer, phpunit, wp-cli   # ← ensures `composer` and `php` are in PATH
 
+      # 3️⃣  Install plugin dev-dependencies (phpunit, wpcs, …)
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist
 
-      - name: Install WP-CLI
-        run: |
-          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-          chmod +x wp-cli.phar
-          sudo mv wp-cli.phar /usr/local/bin/wp
+      # 4️⃣  Spin up the official WP test library (downloads WP core + config)
+      - name: Set up WordPress test library
+        uses: actions/setup-wordpress-test-library@v1
+        with:
+          wordpress-version: latest          # or '6.5', etc.
+          php-version: 8.2
 
-      - name: Set up WordPress test library and config
-        run: |
-          git clone --depth=1 --branch=6.5 https://github.com/WordPress/wordpress-develop.git /tmp/wordpress
-          bash /tmp/wordpress/tools/local-env/scripts/start.sh
-          git clone --depth=1 https://github.com/WordPress/wordpress-develop.git /tmp/wordpress-tests-lib
-          bash /tmp/wordpress-tests-lib/tools/install.sh wordpress root '' 127.0.0.1 latest
-
+      # 5️⃣  Run the test suite
       - name: Run PHPUnit
-        env:
-          WP_TESTS_DIR: /tmp/wordpress-tests-lib
-        run: |
-          vendor/bin/phpunit --configuration phpunit.xml.dist
+        run: vendor/bin/phpunit --configuration phpunit.xml.dist --testdox
