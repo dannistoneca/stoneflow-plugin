@@ -2,6 +2,7 @@
 /**
  * PHPUnit bootstrap for StoneFlow.
  */
+echo "BOOTSTRAP   Loaded " . __FILE__ . PHP_EOL;
 
 $tests_dir = getenv( 'WP_TESTS_DIR' );            // set by CI
 
