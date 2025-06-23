@@ -36,7 +36,7 @@ jobs:
         with:
           php-version: 8.2
           coverage: none
-          tools: composer, phpunit, wp-cli
+          tools: composer, wp-cli
           extensions: >
             mbstring,
             intl,
