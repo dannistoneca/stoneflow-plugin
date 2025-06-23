@@ -8,7 +8,6 @@
         </testsuite>
     </testsuites>
     <php>
-        <env name="WP_TESTS_DIR" value="${WP_TESTS_DIR:-/tmp/wordpress-tests-lib}" />
         <ini name="error_reporting" value="-1" />
         <ini name="display_errors"  value="1" />
     </php>
