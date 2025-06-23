@@ -1,4 +1,9 @@
-name: StoneFlow Plugin CI
+- name: Install WordPress test library
+  run: |
+    git clone --depth=1 https://github.com/WordPress/wordpress-develop.git /tmp/wordpress-develop
+    cp -r /tmp/wordpress-develop/tests/phpunit/includes /tmp/wordpress-tests-lib
+    cp -r /tmp/wordpress-develop/tests/phpunit/data /tmp/wordpress-tests-lib
+    cp /tmp/wordpress-develop/wp-tests-config-sample.php /tmp/wordpress-tests-lib/wp-tests-config.phpname: StoneFlow Plugin CI
 
 on:
   push:
