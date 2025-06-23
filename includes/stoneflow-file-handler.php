@@ -10,9 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Handle file upload
 function stoneflow_handle_file_upload( $file, $service_id ) {
-	if ( ! function_exists( 'wp_handle_upload' ) ) {
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-	}
+        if ( ! function_exists( 'wp_handle_upload' ) ) {
+                if ( defined( 'ABSPATH' ) ) {
+                        require_once ABSPATH . 'wp-admin/includes/file.php';
+                } else {
+                        return false;
+                }
+        }
 
 	$uploaded = wp_handle_upload( $file, array( 'test_form' => false ) );
 
