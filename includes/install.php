@@ -1,18 +1,18 @@
 <?php
 // includes/install.php
 
-if (!defined('ABSPATH')) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
 function stoneflow_install_tables() {
-    global $wpdb;
+	global $wpdb;
 
-    $charset_collate = $wpdb->get_charset_collate();
+	$charset_collate = $wpdb->get_charset_collate();
 
-    $table_name = $wpdb->prefix . 'stoneflow_clients';
+	$table_name = $wpdb->prefix . 'stoneflow_clients';
 
-    $sql = "CREATE TABLE $table_name (
+	$sql = "CREATE TABLE $table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         name text NOT NULL,
         email text NOT NULL,
@@ -23,6 +23,6 @@ function stoneflow_install_tables() {
         PRIMARY KEY  (id)
     ) $charset_collate;";
 
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	dbDelta( $sql );
 }
