@@ -26,11 +26,11 @@ jobs:
           --health-retries=5
 
     steps:
-      # 1️⃣  Pull the repository
-      - name: Check out code
+      # 1️⃣  Check out the code
+      - name: Check out repository
         uses: actions/checkout@v4
 
-      # 2️⃣  Install PHP 8.2 + required tools/extensions
+      # 2️⃣  Set up PHP 8.2 with all required tools and extensions
       - name: Set up PHP 8.2
         uses: shivammathur/setup-php@v2
         with:
@@ -48,19 +48,19 @@ jobs:
             tokenizer,
             zip
 
-      # 3️⃣  Install Composer dependencies (PHPUnit, WPCS, …)
-      - name: Install Composer deps
+      # 3️⃣  Install Composer dependencies (PHPUnit, PHPCS, etc.)
+      - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --no-suggest
 
-      # 4️⃣  Install Subversion (needed by WP test-library action)
+      # 4️⃣  Install Subversion (required by the WP test-library action)
       - name: Install SVN
         run: sudo apt-get update && sudo apt-get install -y subversion
 
-      # 5️⃣  Download WordPress core + official test library
+      # 5️⃣  Download WordPress core and the official PHPUnit test library
       - name: Set up WordPress test library
         uses: sjinks/setup-wordpress-test-library@v2.1.4
         with:
-          version: latest                 # <- corrected input name
+          version: latest           # <-- correct input name
           db_user: wordpress
           db_password: wordpress
           db_name: wordpress_test
