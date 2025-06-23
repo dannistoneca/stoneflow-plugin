@@ -1,72 +1,72 @@
 /* admin/style.css */
 
 .stoneflow-wrapper {
-    max-width: 1000px;
-    margin: 30px auto;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	max-width: 1000px;
+	margin: 30px auto;
+	background: #ffffff;
+	border-radius: 10px;
+	padding: 30px;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .stoneflow-wrapper h1,
 .stoneflow-wrapper h2 {
-    margin-bottom: 20px;
-    color: #222;
+	margin-bottom: 20px;
+	color: #222;
 }
 
 .stoneflow-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
 }
 
 .stoneflow-table th,
 .stoneflow-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
+	border: 1px solid #ddd;
+	padding: 12px;
+	text-align: left;
 }
 
 .stoneflow-table th {
-    background-color: #f8f8f8;
-    font-weight: bold;
+	background-color: #f8f8f8;
+	font-weight: bold;
 }
 
 .stoneflow-status-active {
-    color: green;
-    font-weight: bold;
+	color: green;
+	font-weight: bold;
 }
 
 .stoneflow-status-inactive {
-    color: red;
-    font-weight: bold;
+	color: red;
+	font-weight: bold;
 }
 
 .stoneflow-button {
-    background-color: #26b79c;
-    border: none;
-    color: white;
-    padding: 8px 14px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 6px;
-    font-size: 14px;
+	background-color: #26b79c;
+	border: none;
+	color: white;
+	padding: 8px 14px;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 6px;
+	font-size: 14px;
 }
 
 .stoneflow-button:hover {
-    background-color: #1ea88a;
+	background-color: #1ea88a;
 }
 
 textarea.stoneflow-notes {
-    width: 100%;
-    height: 80px;
-    padding: 10px;
-    margin-top: 8px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    resize: vertical;
+	width: 100%;
+	height: 80px;
+	padding: 10px;
+	margin-top: 8px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	resize: vertical;
 }
