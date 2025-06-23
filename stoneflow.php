@@ -22,6 +22,12 @@ require_once STONEFLOW_DIR . 'includes/class-stone-ai.php';
 require_once STONEFLOW_DIR . 'includes/class-admin-notes.php';
 require_once STONEFLOW_DIR . 'includes/class-service-purchase.php';
 
+register_activation_hook( __FILE__, function () {
+    global $wpdb;
+    StoneFlow\create_services_table( $wpdb );
+} );
+
+
 // Activation: Create custom tables
 register_activation_hook(__FILE__, ['StoneFlow_Client_Manager', 'install']);
 register_activation_hook(__FILE__, ['StoneFlow_Service_Queue', 'install']);
