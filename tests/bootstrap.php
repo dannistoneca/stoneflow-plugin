@@ -16,26 +16,31 @@ if (file_exists($autoload)) {
     exit(1);
 }
 
-$tests_dir = getenv('WP_TESTS_DIR'); // set by CI
+// Base directory of the WordPress test library.
+$tests_dir = getenv('WP_TESTS_DIR'); // Set by CI.
 
 // Fallback to the vendor copy when running locally.
-if (!$tests_dir) {
-    $tests_dir = dirname(__DIR__) . '/vendor/wp-phpunit/wp-phpunit/includes';
+if (! $tests_dir) {
+    $tests_dir = dirname(__DIR__) . '/vendor/wp-phpunit/wp-phpunit';
 }
 
-echo "DEBUG  testing path: {$tests_dir}/functions.php\n";
-echo "DEBUG  file_exists(): " . (file_exists($tests_dir . '/functions.php') ? 'yes' : 'no') . "\n";
+// WordPress test library lives in the `includes` directory.
+$includes = $tests_dir . '/includes';
+
+echo "DEBUG  testing path: {$includes}/functions.php\n";
+echo "DEBUG  file_exists(): " . (file_exists($includes . '/functions.php') ? 'yes' : 'no') . "\n";
 
 // Bail out if it still isn’t there.
-if (!file_exists($tests_dir . '/functions.php')) {
-    fwrite(STDERR,
-        "Error: WordPress test library not found at $tests_dir.\n".
+if (! file_exists($includes . '/functions.php')) {
+    fwrite(
+        STDERR,
+        "Error: WordPress test library not found at $includes.\n".
         "Run composer install or fix the path in tests/bootstrap.php.\n"
     );
     exit(1);
 }
 
-require_once $tests_dir . '/functions.php';
+require_once $includes . '/functions.php';
 
 tests_add_filter(
     'muplugins_loaded',
@@ -44,4 +49,4 @@ tests_add_filter(
     }
 );
 
-require $tests_dir . '/bootstrap.php';
+require $includes . '/bootstrap.php';
