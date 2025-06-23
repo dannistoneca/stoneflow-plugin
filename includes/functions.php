@@ -27,4 +27,3 @@ function stoneflow_create_clients_table() {
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta( $sql );
 }
-register_activation_hook( __FILE__, 'stoneflow_create_clients_table' );

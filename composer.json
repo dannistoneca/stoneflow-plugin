@@ -14,12 +14,12 @@
     "yoast/phpunit-polyfills": "^4.0"
   },
   "scripts": {
-    "lint": "phpcs --standard=WordPress --extensions=php stoneflow",
+    "lint": "phpcs --standard=WordPress --extensions=php stoneflow.php includes",
     "test": "phpunit"
   },
   "autoload": {
     "psr-4": {
-      "StoneFlow\\": "stoneflow/"
+      "StoneFlow\\": "includes/"
     }
   },
   "config": {
