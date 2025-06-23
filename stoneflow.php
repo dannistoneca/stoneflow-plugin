@@ -36,6 +36,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/admin-settings.php';
 
 // Optional: add admin pages or command panels
 require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-service-queue.php';
+require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-client-manager.php';
 require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-client-intake.php';
 require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-add-client.php';
 require_once plugin_dir_path(__FILE__) . 'includes/pages/stoneflow-view-client.php';

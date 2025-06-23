@@ -31,7 +31,7 @@ function stoneflow_register_admin_menu() {
         'Service Queue',
         'manage_options',
         'stoneflow-service-queue',
-        'stoneflow_service_queue_page'
+        'stoneflow_render_service_queue_page'
     );
 
     // Submenu: S.T.O.N.E.

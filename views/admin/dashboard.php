@@ -26,7 +26,7 @@
               <td><?= esc_html($client->email); ?></td>
               <td><?= $client->discovery_info ? 'Available' : 'No data'; ?></td>
               <td>
-                <a href="<?= admin_url('admin.php?page=stoneflow-client&client_id=' . $client->id); ?>" class="button">View</a>
+                <a href="<?= admin_url('admin.php?page=stoneflow-view-client&id=' . $client->id); ?>" class="button">View</a>
               </td>
             </tr>
           <?php endforeach; ?>

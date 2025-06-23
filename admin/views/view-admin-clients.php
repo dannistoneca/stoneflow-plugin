@@ -28,7 +28,7 @@ $services_table = $wpdb->prefix . 'stoneflow_services';
                     <td><?php echo esc_html($user->user_email); ?></td>
                     <td><?php echo $discovery ? '✅ Collected' : 'No data'; ?></td>
                     <td>
-                        <a href="<?php echo admin_url('admin.php?page=stoneflow-client-view&user_id=' . $user->ID); ?>">View Profile</a>
+                        <a href="<?php echo admin_url('admin.php?page=stoneflow-view-client&id=' . $user->ID); ?>">View Profile</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
