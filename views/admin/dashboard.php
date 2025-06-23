@@ -44,6 +44,6 @@
 
   <div id="notes" class="sf-tab-content hidden">
     <h2>Admin Notes</h2>
-    <?php include plugin_dir_path(__FILE__) . 'view-admin-notes.php'; ?>
+    <?php include plugin_dir_path(__FILE__) . '../../admin/views/view-admin-notes.php'; ?>
   </div>
 </div>
