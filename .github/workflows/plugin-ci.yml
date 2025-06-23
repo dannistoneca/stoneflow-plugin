@@ -48,20 +48,28 @@ jobs:
             tokenizer,
             zip
 
-      # 3️⃣  Install Composer dependencies (PHPUnit, WPCS, etc.)
-      - name: Install Composer dependencies
+      # 3️⃣  Install Composer dependencies (PHPUnit, WPCS, …)
+      - name: Install Composer deps
         run: composer install --no-interaction --prefer-dist --no-suggest
 
-      # 4️⃣  Download WordPress core + official test library
+      # 4️⃣  Install Subversion (needed by WP test-library action)
+      - name: Install SVN
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
+      # 5️⃣  Download WordPress core + official test library
       - name: Set up WordPress test library
         uses: sjinks/setup-wordpress-test-library@v2.1.4
         with:
-          wordpress-version: latest
+          version: latest                 # <- corrected input name
+          db_user: wordpress
+          db_password: wordpress
+          db_name: wordpress_test
+          db_host: 127.0.0.1
 
-      # 5️⃣  Run the PHPUnit test suite
+      # 6️⃣  Run the PHPUnit test suite
       - name: Run PHPUnit
         run: vendor/bin/phpunit --configuration phpunit.xml.dist --testdox
 
-      # 6️⃣  Enforce WordPress coding standards
+      # 7️⃣  Enforce WordPress coding standards
       - name: Run PHPCS
         run: vendor/bin/phpcs --standard=WordPress stoneflow
