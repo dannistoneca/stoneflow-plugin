@@ -8,8 +8,6 @@
         </testsuite>
     </testsuites>
     <php>
-        <!-- Use bundled WP testing library unless overridden -->
-        <env name="WP_TESTS_DIR" value="vendor/wp-phpunit/wp-phpunit/includes" />
         <ini name="error_reporting" value="-1" />
         <ini name="display_errors"  value="1" />
     </php>
