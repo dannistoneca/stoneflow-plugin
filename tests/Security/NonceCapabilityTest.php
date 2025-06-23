@@ -9,8 +9,8 @@ class NonceCapabilityTest extends WP_UnitTestCase {
 	/** Client submission should pass for admin with good nonce */
 	public function test_admin_with_good_nonce_passes() {
 		wp_set_current_user( $this->admin_id );
-		$nonce = wp_create_nonce( 'stoneflow_add_client' );
-		$this->assertTrue( wp_verify_nonce( $nonce, 'stoneflow_add_client' ) );
+                $nonce = wp_create_nonce( 'stoneflow_add_client' );
+                $this->assertNotFalse( wp_verify_nonce( $nonce, 'stoneflow_add_client' ) );
 	}
 
 	/** Missing nonce must fail */
