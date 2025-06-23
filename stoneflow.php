@@ -21,11 +21,13 @@ require_once STONEFLOW_DIR . 'includes/class-service-queue.php';
 require_once STONEFLOW_DIR . 'includes/class-stone-ai.php';
 require_once STONEFLOW_DIR . 'includes/class-admin-notes.php';
 require_once STONEFLOW_DIR . 'includes/class-service-purchase.php';
+require_once STONEFLOW_DIR . 'includes/functions.php';
 
 register_activation_hook( __FILE__, function () {
     global $wpdb;
     StoneFlow\create_services_table( $wpdb );
 } );
+register_activation_hook( __FILE__, 'stoneflow_create_clients_table' );
 
 
 // Activation: Create custom tables
