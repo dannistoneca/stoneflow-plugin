@@ -10,6 +10,9 @@ if ( ! $tests_dir ) {
 	$tests_dir = dirname( __DIR__ ) . '/vendor/wp-phpunit/wp-phpunit/includes';
 }
 
+echo "DEBUG  testing path: {$tests_dir}/functions.php\n";
+echo "DEBUG  file_exists(): " . ( file_exists( $tests_dir . '/functions.php' ) ? 'yes' : 'no' ) . "\n";
+
 // Bail out if it still isn’t there.
 if ( ! file_exists( $tests_dir . '/functions.php' ) ) {
 	fwrite( STDERR,
