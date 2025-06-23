@@ -43,6 +43,13 @@ This plugin is being actively developed by Danni Stone in collaboration with Lex
 
 ---
 
+## 📋 Changelog
+
+- **1.2.5** – Added client profile helpers, expanded admin and client dashboards, and improved installation routines.
+- **1.1.0** – Initial release with basic client management and admin pages.
+
+---
+
 ## 🔒 License
 
 MIT License — open to collaboration but owned and managed by Danni Stone (Stone Business Solutions).
