@@ -1,5 +1,6 @@
 <?php
 class NonceCapabilityTest extends WP_UnitTestCase {
+        protected int $admin_id;
 
 	public function setUp(): void {
 		parent::setUp();
@@ -10,7 +11,7 @@ class NonceCapabilityTest extends WP_UnitTestCase {
 	public function test_admin_with_good_nonce_passes() {
 		wp_set_current_user( $this->admin_id );
 		$nonce = wp_create_nonce( 'stoneflow_add_client' );
-		$this->assertTrue( wp_verify_nonce( $nonce, 'stoneflow_add_client' ) );
+                $this->assertNotFalse( wp_verify_nonce( $nonce, 'stoneflow_add_client' ) );
 	}
 
 	/** Missing nonce must fail */
