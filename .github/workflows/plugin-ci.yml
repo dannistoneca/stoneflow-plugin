@@ -1,6 +1,8 @@
 name: StoneFlow Plugin CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
   test:
@@ -17,32 +19,49 @@ jobs:
         ports:
           - 3306:3306
         options: >-
+          --name stoneflow-mysql
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
 
     steps:
-      # 1️⃣  Check out the plugin code
-      - uses: actions/checkout@v4
+      # 1️⃣  Pull the repository
+      - name: Check out code
+        uses: actions/checkout@v4
 
-      # 2️⃣  Install PHP 8.2 **and** make sure Composer, PHPUnit & WP-CLI are on PATH
+      # 2️⃣  Install PHP 8.2 + required tools/extensions
       - name: Set up PHP 8.2
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
           coverage: none
-          extensions: mbstring, intl
-          tools: composer, phpunit, wp-cli   # ← guarantees `composer` & `phpunit` binaries exist
+          tools: composer, phpunit, wp-cli
+          extensions: >
+            mbstring,
+            intl,
+            dom,
+            xml,
+            simplexml,
+            xmlwriter,
+            curl,
+            tokenizer,
+            zip
 
-      # 3️⃣  Install Composer dependencies (phpunit, wpcs, …)
-      - name: Install Composer deps
-        run: composer install --no-interaction --prefer-dist
+      # 3️⃣  Install Composer dependencies (PHPUnit, WPCS, etc.)
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --no-suggest
 
-      # 4️⃣  Download WordPress + its PHPUnit library (one-liner action)
+      # 4️⃣  Download WordPress core + official test library
       - name: Set up WordPress test library
-        uses: sjinks/setup-wordpress-test-library@v2.1.4   # marketplace action
+        uses: sjinks/setup-wordpress-test-library@v2.1.4
+        with:
+          wordpress-version: latest
 
-      # 5️⃣  Run the test suite
+      # 5️⃣  Run the PHPUnit test suite
       - name: Run PHPUnit
         run: vendor/bin/phpunit --configuration phpunit.xml.dist --testdox
+
+      # 6️⃣  Enforce WordPress coding standards
+      - name: Run PHPCS
+        run: vendor/bin/phpcs --standard=WordPress stoneflow
