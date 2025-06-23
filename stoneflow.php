@@ -2,7 +2,7 @@
 /**
  * Plugin Name: StoneFlow
  * Description: Full-featured client and service management system by Stone Business Solutions.
- * Version: 1.1.0
+ * Version: 1.2.5
  * Author: Stone Business Solutions
  */
 
